@@ -1,4 +1,4 @@
-package org.themohit.quiz_app.model;
+package org.themohit.quiz_service.model;
 
 import jakarta.persistence.*;
 
@@ -11,8 +11,8 @@ public class Quiz {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
     private String title;
-    @ManyToMany
-    private List<Question> questions;
+    @ElementCollection
+    private List<Integer> questionId;
 
     public Quiz() {
     }
@@ -21,15 +21,15 @@ public class Quiz {
         this.id = id;
     }
 
-    public Quiz(String title, List<Question> questions) {
+    public Quiz(String title, List<Integer> questionId) {
         this.title = title;
-        this.questions = questions;
+        this.questionId = questionId;
     }
 
-    public Quiz(int id, String title, List<Question> questions) {
+    public Quiz(int id, String title, List<Integer> questionId) {
         this.id = id;
         this.title = title;
-        this.questions = questions;
+        this.questionId = questionId;
     }
 
     public int getId() {
@@ -48,12 +48,12 @@ public class Quiz {
         this.title = title;
     }
 
-    public List<Question> getQuestions() {
-        return questions;
+    public List<Integer> getQuestionId() {
+        return questionId;
     }
 
-    public void setQuestions(List<Question> questions) {
-        this.questions = questions;
+    public void setQuestions(List<Integer> questionId) {
+        this.questionId = questionId;
     }
 
     @Override
@@ -61,7 +61,7 @@ public class Quiz {
         return "Quiz{" +
                 "id=" + id +
                 ", title='" + title + '\'' +
-                ", questions=" + questions +
+                ", questionId=" + questionId +
                 '}';
     }
 }

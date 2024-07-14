@@ -1,6 +1,4 @@
-package org.themohit.quiz_app.model;
-
-import jakarta.persistence.Entity;
+package org.themohit.quiz_service.model;
 
 
 public class QuestionWrapper {

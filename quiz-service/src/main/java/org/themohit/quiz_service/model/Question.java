@@ -1,4 +1,4 @@
-package org.themohit.quiz_app.model;
+package org.themohit.quiz_service.model;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;

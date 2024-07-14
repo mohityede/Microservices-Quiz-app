@@ -1,15 +1,15 @@
-package org.themohit.quiz_app.controller;
+package org.themohit.quiz_service.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-import org.themohit.quiz_app.model.QuestionWrapper;
-import org.themohit.quiz_app.model.Quiz;
-import org.themohit.quiz_app.model.UserResponse;
-import org.themohit.quiz_app.service.QuizService;
+import org.themohit.quiz_service.model.QuestionWrapper;
+import org.themohit.quiz_service.model.Quiz;
+import org.themohit.quiz_service.model.UserReqBody;
+import org.themohit.quiz_service.model.UserResponse;
+import org.themohit.quiz_service.service.QuizService;
 
 import java.util.List;
-import java.util.Optional;
 
 @RestController
 @RequestMapping("/quiz")
@@ -18,10 +18,8 @@ public class QuizController {
     private QuizService service;
 
     @PostMapping("/create")
-    public ResponseEntity<String> createQuiz(@RequestParam String title,
-                                            @RequestParam String category,
-                                             @RequestParam int quesCount){
-        return service.createQuiz(title,category,quesCount);
+    public ResponseEntity<String> createQuiz(@RequestBody UserReqBody body){
+        return service.createQuiz(body.getTitle(),body.getCategory(),body.getQuesCount());
     }
 
     @GetMapping("/all")
